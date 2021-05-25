@@ -157,10 +157,10 @@ local function StatusLine_augroup()
 	vim.api.nvim_command('augroup StatusLine')
 	vim.api.nvim_command('autocmd!')
 	for _,event in ipairs(events) do
-		local command = string.format('autocmd %s * lua require("femboystatus").active()', event)
+		local command = string.format('autocmd %s * lua require("statusbar").active()', event)
 		vim.api.nvim_command(command)
 	end
-	vim.api.nvim_command('autocmd WinLeave * lua require("femboystatus").inactive()')
+	vim.api.nvim_command('autocmd WinLeave * lua require("statusbar").inactive()')
 	vim.api.nvim_command('augroup END')
 end
 

@@ -16,8 +16,8 @@ local colors = {
 }
 
 local function current_line_percent()
-	local current_line = vim.fn.line('.') or 1
-	local total_line = vim.fn.line('$') or 1
+	local current_line = vim.fn.line('.')
+	local total_line = vim.fn.line('$')
 	if current_line == 1 then
 		return 'TOP'
 	elseif current_line == vim.fn.line('$') then

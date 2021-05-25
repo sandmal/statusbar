@@ -144,13 +144,13 @@ end
 local function set_inactive_statusline()
 	current_winid = fn.win_getid()
 	current_bufnr = fn.winbufnr(current_winid)
---	if StatusLine_special_filetype[vim.bo[current_bufnr].filetype] ~= nil then
---		generate_StatusLineNC2()
---		vim.wo.statusline = StatusLineNC2
---	else
---		generate_StatusLineNC()
---		vim.wo.statusline = StatusLineNC
---	end
+	if StatusLine_special_filetype[vim.bo[current_bufnr].filetype] ~= nil then
+		generate_StatusLineNC2()
+		vim.wo.statusline = StatusLineNC2
+	else
+		generate_StatusLineNC()
+		vim.wo.statusline = StatusLineNC
+	end
 end
 
 local function StatusLine_augroup()
@@ -166,7 +166,7 @@ end
 
 
 local function setup( I )
-	StatusLine_special_filetype = { NvimTree = 'NvimTree ', packer = 'Packer ' }
+	StatusLine_special_filetype = { NvimTree = 'NvimTree ', packer = 'Packer ' }
 	vim.api.nvim_command('hi StatusLineFileActive guifg=#b0da6c guibg=NONE gui=bold')
 	vim.api.nvim_command('hi StatusLineFileNonActive guifg=#b0da6c guibg=NONE')
 	StatusLine_augroup()

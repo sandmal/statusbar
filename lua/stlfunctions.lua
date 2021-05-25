@@ -1,5 +1,3 @@
-local M = { }
-
 
 local colors = {
 	bg = 'none',
@@ -17,19 +15,16 @@ local colors = {
 	red = '#ec5f67'
 }
 
-local numbers = { '一', '二', '三', '四', '五', '六', '七', '八', '九', '十'}
-numbers[0] = '零'
-numbers[100] = '百'
-
 local function current_line_percent()
-	local current_line = vim.fn.line('.')
-	local total_line = vim.fn.line('$')
+	local current_line = vim.fn.line('.') or 1
+	local total_line = vim.fn.line('$') or 1
 	if current_line == 1 then
-		return '  上 '
+		return 'TOP'
 	elseif current_line == vim.fn.line('$') then
-		return '  下 '
+		return 'BOT'
 	end
 	local percentage,_ = math.modf((current_line/total_line)*100)
+	return percentage
 end
 
 local function get_nvim_lsp_diagnostic( diag_type )

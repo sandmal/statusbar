@@ -144,13 +144,13 @@ end
 local function set_inactive_statusline()
 	current_winid = fn.win_getid()
 	current_bufnr = fn.winbufnr(current_winid)
-	if StatusLine_special_filetype[vim.bo[current_bufnr].filetype] ~= nil then
-		generate_StatusLineNC2()
-		vim.wo.statusline = StatusLineNC2
-	else
-		generate_StatusLineNC()
-		vim.wo.statusline = StatusLineNC
-	end
+--	if StatusLine_special_filetype[vim.bo[current_bufnr].filetype] ~= nil then
+--		generate_StatusLineNC2()
+--		vim.wo.statusline = StatusLineNC2
+--	else
+--		generate_StatusLineNC()
+--		vim.wo.statusline = StatusLineNC
+--	end
 end
 
 local function StatusLine_augroup()

@@ -166,7 +166,7 @@ end
 
 
 local function setup( I )
-	StatusLine_special_filetype = { NvimTree = 'NvimTree פּ', packer = 'Packer ' }
+	StatusLine_special_filetype = { NvimTree = 'NvimTree ', packer = 'Packer ' }
 	vim.api.nvim_command('hi StatusLineFileActive guifg=#b0da6c guibg=NONE gui=bold')
 	vim.api.nvim_command('hi StatusLineFileNonActive guifg=#b0da6c guibg=NONE')
 	StatusLine_augroup()

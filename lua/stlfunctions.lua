@@ -21,30 +21,6 @@ local numbers = { '一', '二', '三', '四', '五', '六', '七', '八', '九',
 numbers[0] = '零'
 numbers[100] = '百'
 
-local function japanese_number( number )
-	local j_number
-	if number <= 9 then
-		j_number = numbers[number]
-	elseif number <= 99 then
-		local d1, d2 = math.floor(number / 10), number % 10
-		local j_d1, j_d2 = '', ''
-		if d1 == 0 then
-			j_d1 = ''
-		elseif d1 == 1 then
-			j_d1 = numbers[10]
-		else
-			j_d1 = numbers[d1]..numbers[10]
-		end
-		if d2 == 0 then
-			j_d2 = ''
-		else
-			j_d2 = numbers[d2]
-		end
-		j_number = j_d1..j_d2
-	end
-	return j_number
-end
-
 local function current_line_percent()
 	local current_line = vim.fn.line('.')
 	local total_line = vim.fn.line('$')
@@ -54,8 +30,6 @@ local function current_line_percent()
 		return '  下 '
 	end
 	local percentage,_ = math.modf((current_line/total_line)*100)
-	local j_percentage = japanese_number(percentage)
-	return j_percentage..' '..'厘'
 end
 
 local function get_nvim_lsp_diagnostic( diag_type )
@@ -157,18 +131,18 @@ end
 local function Mode()
 	  -- auto change color according the vim mode
 	  local alias = {
-		  n = '  ノーマル ', --normal
-		  i = ' インサート', --insert
-		  c = '  コマンド ', --command line
-		  v = ' ビジュアル', --visual
-		  V = ' ビジュアル', --visual line
-		  [''] = ' ビジュアル', --visual block
-		  R  = '   代わる  ', --replace
-		  Rv  = '   代わる  ', --replace visual
-		  s  = '  セレクト ', --select
-		  S  = '  セレクト ', --select line
-		  [''] = '  セレクト ', --select block
-		  t  = ' ターミナル', -- terminal
+		  n = 'N ', --normal
+		  i = 'I ', --insert
+		  c = 'C ', --command line
+		  v = 'V ', --visual
+		  V = 'VL', --visual line
+		  [''] = 'VB', --visual block
+		  R  = 'R ', --replace
+		  Rv  = 'RV', --replace visual
+		  s  = 'S ', --select
+		  S  = 'SL', --select line
+		  [''] = 'SB', --select block
+		  t  = 'T ', -- terminal
 		  ['r']  = 'HIT-ENTER', -- HIT-ENTER
 		  ['!']  = 'SHELL', -- shell
 		  ['r?'] = ':CONFIRM', -- :CONFIRM

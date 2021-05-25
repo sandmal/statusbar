@@ -17,9 +17,9 @@ local function generate_StatusLine()
 	local mod, mod_hl = require('stlfunctions').File_Mod()
 	StatusLine =
 '%#'..icon_hl..'#'..icon..
-[[ ]]..
+' '..
 [[%#StatusLineFileActive#]]..filename..
-[[ ]]..
+' '..
 '%#'..'Normal'..'#'..[[%{luaeval("require('stlfunctions').File_Mod()")}]]..
 
 [[%=]]..
@@ -27,7 +27,7 @@ local function generate_StatusLine()
 [[%=]]..
 
 [[%#LspDiagnosticsDefaultError#]]..[[%-4{luaeval("require('stlfunctions').Error()")}]]..
-[[%#Rainbow#]]..[[%10{luaeval("require('stlfunctions').Line_P()")}]]..
+[[%#Normal#]]..[[%10{luaeval("require('stlfunctions').Line_P()")}]]..
 
 '%<'
 end
